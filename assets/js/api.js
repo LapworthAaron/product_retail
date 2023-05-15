@@ -17,7 +17,7 @@ const loadPage = (data) => {
         container.setAttribute('id',item.id);
         prodList.append(container);
 
-        let imageHolder = document.createElement('div');
+        let imageHolder = document.createElement('figure');
         imageHolder.classList.add('prodImageContainer')
         let image = document.createElement('img');
         image.src = item.image;
@@ -25,12 +25,12 @@ const loadPage = (data) => {
 
         let titleHolder = document.createElement('div');
         titleHolder.classList.add('titleContainer')
-        let title = document.createElement('h2');
+        let title = document.createElement('h3');
         title.innerText = item.title;
         titleHolder.append(title);
 
         let priceHolder = document.createElement('div');
-        priceHolder.classList.add('prodImageContainer')
+        priceHolder.classList.add('priceContainer')
         let price = document.createElement('h3');
         price.innerText = '£' + item.price;
         priceHolder.append(price);
