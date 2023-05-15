@@ -13,25 +13,39 @@ const loadPage = (data) => {
     let prodList = document.getElementById('product_list');
     data.forEach(item => {
         let container = document.createElement('div');
-        container.classList.add('prod_container')
+        container.classList.add('prod_container');
         container.setAttribute('id',item.id);
         prodList.append(container);
 
-        let title = document.createElement('h2');
-        title.innerText = item.title;
-        let price = document.createElement('h3');
-        price.innerText = item.price;
-        let cat = document.createElement('h3');
-        cat.innerText = item.category;
-        let rating = document.createElement('h3');
-        rating.innerText = item.rating.rate;
-        let reviews = document.createElement('h3');
-        reviews.innerText = item.rating.count;
-        let desc = document.createElement('p');
-        desc.innerText = item.description;
+        let imageHolder = document.createElement('div');
+        imageHolder.classList.add('prodImageContainer')
         let image = document.createElement('img');
         image.src = item.image;
-        image.setAttribute('width','200px');
-        container.append(title, price, rating, reviews, cat, desc, image);
+        imageHolder.append(image);
+
+        let titleHolder = document.createElement('div');
+        titleHolder.classList.add('titleContainer')
+        let title = document.createElement('h2');
+        title.innerText = item.title;
+        titleHolder.append(title);
+
+        let priceHolder = document.createElement('div');
+        priceHolder.classList.add('prodImageContainer')
+        let price = document.createElement('h3');
+        price.innerText = '£' + item.price;
+        priceHolder.append(price);
+        
+        // let cat = document.createElement('h3');
+        // cat.innerText = item.category;
+        // let rating = document.createElement('h3');
+        // rating.innerText = item.rating.rate;
+        // let reviews = document.createElement('h3');
+        // reviews.innerText = item.rating.count;
+        // let desc = document.createElement('p');
+        // desc.innerText = item.description;
+
+        
+        // image.setAttribute('width','200px');
+        container.append(imageHolder, titleHolder, priceHolder);
     })
 }
