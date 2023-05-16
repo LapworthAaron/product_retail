@@ -73,9 +73,7 @@ main {
 }
 
 
-/* 
-test modal
-*/
+/******************** MODAL ********************/
 .modal {
     visibility: hidden; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -89,12 +87,12 @@ test modal
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content/Box */
+/* Modal Content */
 .modal_content {
     width: 90%;
     height: 90%;
-    max-width: 500px;
-    max-height: 400px;
+    max-width: 600px;
+    max-height: 500px;
     background-color: #fefefe;
     margin: auto auto;
     padding: 5px;
@@ -108,6 +106,30 @@ test modal
     display: grid;
 }
 
+/* The Close Button */
+#modal_close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#modal_close:hover,
+#modal_close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modal_close {
+    position: absolute;
+    top: -40px;
+    right: 0px;
+    padding: 0 6px;
+    background-color: #fefefe;
+    margin-bottom: 5px;
+}
+
+/* Modal heading (prod title, price and ratings) */
 #modal_heading {
     grid-area: heading;
     overflow: hidden;
@@ -118,7 +140,7 @@ test modal
 #product_title {
     overflow: hidden;
     margin-bottom: 5px;
-    margin: auto;
+    margin: 0 auto;
 }
 
 #product_price_rating {
@@ -126,21 +148,28 @@ test modal
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 5px 10px;
+    margin: auto 0;
+}
+
+/* Modal footer (add to basket button and prod desc) */
+#modal_footer {
+    grid-area: footer;
+    overflow: auto;
+    margin-top: 5px;
 }
 
 #modal_button {
-    margin: auto;
+    margin: auto auto;
     height: 30px;
     width: 100px;
+    margin-bottom: 10px;
 }
 
-#modal_close {
-    position: absolute;
-    top: -40px;
-    right: 0px;
-    padding: 0 6px;
-    background-color: #fefefe;
-    margin-bottom: 5px;
+#modal_button:hover {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 #modal_image_container img {
@@ -158,30 +187,11 @@ test modal
     padding-right: 10px;
 }
 
-#modal_footer {
-    grid-area: footer;
-    overflow: auto;
-    margin-top: 5px;
-}
 
 
-/* The Close Button */
-.close {
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-@media only screen and (min-width: 501px) {
+@media only screen and (min-width: 415px) {
     .modal_content {
-        grid-template-rows: 42% 58%;
+        grid-template-rows: 25% 75%;
         grid-template-columns: 50% 50%;
         grid-template-areas:
         "image heading"
@@ -189,7 +199,7 @@ test modal
     }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 414px) {
     .modal_content {
         grid-template-rows: 25% 40% 35%;
         grid-template-columns: auto;

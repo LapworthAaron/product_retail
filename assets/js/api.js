@@ -38,26 +38,30 @@ const loadPage = (data) => {
         container.setAttribute('data_id', item.id);
         prodList.append(container);
         container.addEventListener('click', (event) => {
+            console.log(event);
             loadModal(event.target.attributes.data_id.value, data);
             modal.style.visibility = "visible";    
         }, false);
 
         let imageHolder = document.createElement('figure');
-        imageHolder.classList.add('prodImageContainer')
+        imageHolder.classList.add('prodImageContainer');
+        imageHolder.setAttribute('data_id', item.id);
         let image = document.createElement('img');
         image.src = item.image;
         image.setAttribute('data_id', item.id);
         imageHolder.append(image);
 
         let titleHolder = document.createElement('div');
-        titleHolder.classList.add('titleContainer')
+        titleHolder.classList.add('titleContainer');
+        titleHolder.setAttribute('data_id', item.id);
         let title = document.createElement('h3');
         title.innerText = item.title;
         title.setAttribute('data_id', item.id);
         titleHolder.append(title);
 
         let priceHolder = document.createElement('div');
-        priceHolder.classList.add('priceContainer')
+        priceHolder.classList.add('priceContainer');
+        priceHolder.setAttribute('data_id', item.id);
         let price = document.createElement('h3');
         price.innerText = '£' + item.price;
         price.setAttribute('data_id', item.id);
