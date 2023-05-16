@@ -80,15 +80,16 @@ const loadModal = (prodId, apiData) => {
     modalTitle.innerText = product.title;
     modalTitle.setAttribute('id', 'product_title');
 
+    let secondLine = document.createElement('div');
+    secondLine.setAttribute('id', 'product_price_rating');
     let price = document.createElement('h4');
     price.innerText = '£' + product.price;
-    price.setAttribute('id', 'product_price');
 
     let rating = document.createElement('h4');
     rating.innerText = `${product.rating.rate} (${product.rating.count})`;
-    rating.setAttribute('id', 'product_rating');
+    secondLine.append(price, rating);
 
-    modalTitleContainer.prepend(modalTitle, price, rating);
+    modalTitleContainer.append(modalTitle, secondLine);
 
     let modalDesceContainer = document.getElementById('modal_footer');
 
@@ -102,7 +103,7 @@ const loadModal = (prodId, apiData) => {
 //function to delete modal elements so the modal starts afresh each time
 //this gets called 3 times, so more efficient this way
 const closeModal = () => {
-    const modalList = ['product_title','product_price','product_desc','product_rating']
+    const modalList = ['product_title','product_price_rating','product_desc']
     modalList.forEach(item => {
         let element = document.getElementById(item);
         element.remove();

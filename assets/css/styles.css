@@ -91,8 +91,10 @@ test modal
 
 /* Modal Content/Box */
 .modal_content {
-    width: 500px;
-    height: 400px;
+    width: 90%;
+    height: 90%;
+    max-width: 500px;
+    max-height: 400px;
     background-color: #fefefe;
     margin: auto auto;
     padding: 5px;
@@ -104,20 +106,32 @@ test modal
     right: 0;
     margin: auto;
     display: grid;
-    grid-template-rows: 40% 60%;
-    grid-template-columns: 50% 50%;
-    grid-template-areas:
-    "image heading"
-    "image footer";
 }
 
 #modal_heading {
     grid-area: heading;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 #product_title {
     overflow: hidden;
+    margin-bottom: 5px;
+    margin: auto;
+}
+
+#product_price_rating {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 5px 10px;
+}
+
+#modal_button {
+    margin: auto;
+    height: 30px;
+    width: 100px;
 }
 
 #modal_close {
@@ -126,6 +140,7 @@ test modal
     right: 0px;
     padding: 0 6px;
     background-color: #fefefe;
+    margin-bottom: 5px;
 }
 
 #modal_image_container img {
@@ -146,6 +161,7 @@ test modal
 #modal_footer {
     grid-area: footer;
     overflow: auto;
+    margin-top: 5px;
 }
 
 
@@ -161,4 +177,25 @@ test modal
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+@media only screen and (min-width: 501px) {
+    .modal_content {
+        grid-template-rows: 42% 58%;
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+        "image heading"
+        "image footer";
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .modal_content {
+        grid-template-rows: 25% 40% 35%;
+        grid-template-columns: auto;
+        grid-template-areas:
+        "heading"
+        "image"
+        "footer";
+    }
 }
