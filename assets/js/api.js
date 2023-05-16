@@ -36,6 +36,7 @@ const loadPage = (data) => {
         let container = document.createElement('div');
         container.classList.add('prod_container');
         container.setAttribute('data_id', item.id);
+        container.setAttribute('role', 'Single Product');
         prodList.append(container);
         container.addEventListener('click', (event) => {
             console.log(event);
@@ -55,7 +56,8 @@ const loadPage = (data) => {
         let titleHolder = document.createElement('div');
         titleHolder.classList.add('titleContainer');
         titleHolder.setAttribute('data_id', item.id);
-        let title = document.createElement('h3');
+        titleHolder.setAttribute('role', 'Product Title');
+        let title = document.createElement('h4');
         title.innerText = item.title;
         title.setAttribute('data_id', item.id);
         titleHolder.append(title);
@@ -63,6 +65,7 @@ const loadPage = (data) => {
         let priceHolder = document.createElement('div');
         priceHolder.classList.add('priceContainer');
         priceHolder.setAttribute('data_id', item.id);
+        priceHolder.setAttribute('role', 'Product Price');
         let price = document.createElement('h3');
         price.innerText = '£' + item.price;
         price.setAttribute('data_id', item.id);
@@ -87,6 +90,7 @@ const loadModal = (prodId, apiData) => {
 
     let secondLine = document.createElement('div');
     secondLine.setAttribute('id', 'product_price_rating');
+    secondLine.setAttribute('role', 'Price and Rating');
     let price = document.createElement('h4');
     price.innerText = '£' + product.price;
 
