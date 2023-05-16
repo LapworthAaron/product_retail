@@ -7,17 +7,17 @@ var span = document.getElementById("modal_close");
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-    modal.style.display = "none";
+    closeModal();
 }
 
 document.addEventListener('keyup', (event) => {
-    if (event.key === "Escape") modal.style.display = "none";
+    if (event.key === "Escape") closeModal();
 })
   
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
-        modal.style.display = "none";
+        closeModal();
     }
 }
 
@@ -29,7 +29,7 @@ fetch('https://fakestoreapi.com/products').then((response) => {
     console.log('api call failed', err);
 });
 
-//load the api data to the page
+//load the api data to the page in a flex format
 const loadPage = (data) => {
     let prodList = document.getElementById('product_list');
     data.forEach(item => {
@@ -62,23 +62,51 @@ const loadPage = (data) => {
         price.innerText = '£' + item.price;
         price.setAttribute('data_id', item.id);
         priceHolder.append(price);
-        
+
         container.append(imageHolder, titleHolder, priceHolder);
     })
 }
 
+//get the api data for the product clicked and load into modal
+//using grid format
 const loadModal = (prodId, apiData) => {
     let modalImage = document.getElementById("modal_image");
-    modalImage.src = apiData[apiData.findIndex(item => item.id == prodId)].image;
+    const product = apiData[apiData.findIndex(item => item.id == prodId)];
+    modalImage.src = product.image;
 
+    let modalTitleContainer = document.getElementById("modal_heading");
+    
+    let modalTitle = document.createElement('h3');
+    modalTitle.innerText = product.title;
+    modalTitle.setAttribute('id', 'product_title');
 
-     // let cat = document.createElement('h3');
-    // cat.innerText = item.category;
-    // let rating = document.createElement('h3');
-    // rating.innerText = item.rating.rate;
-    // let reviews = document.createElement('h3');
-    // reviews.innerText = item.rating.count;
-    // let desc = document.createElement('p');
-    // desc.innerText = item.description;
+    let price = document.createElement('h4');
+    price.innerText = '£' + product.price;
+    price.setAttribute('id', 'product_price');
+
+    let rating = document.createElement('h4');
+    rating.innerText = `${product.rating.rate} (${product.rating.count})`;
+    rating.setAttribute('id', 'product_rating');
+
+    modalTitleContainer.append(modalTitle, price, rating);
+
+    let modalDesceContainer = document.getElementById('modal_footer');
+
+    let desc = document.createElement('p');
+    desc.innerText = product.description;
+    desc.setAttribute('id', 'product_desc');
+
+    modalDesceContainer.append(desc);
+}
+
+//function to delete modal elements so the modal starts afresh each time
+//this gets called 3 times, so more efficient this way
+const closeModal = () => {
+    const modalList = ['product_title','product_price','product_desc','product_rating']
+    modalList.forEach(item => {
+        let element = document.getElementById(item);
+        element.remove();
+    });
+    modal.style.display = "none";
 }
 
