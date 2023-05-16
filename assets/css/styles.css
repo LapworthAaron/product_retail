@@ -148,12 +148,17 @@ html {
 /* Modal footer (add to basket button and prod desc) */
 #modal_footer {
     grid-area: footer;
-    overflow: auto;
     margin-top: 5px;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+}
+
+#product_desc {
+    overflow: auto;
 }
 
 #modal_button {
-    margin: auto auto;
     height: 30px;
     width: 100px;
     margin-bottom: 10px;
