@@ -49,6 +49,7 @@ const loadPage = (data) => {
         let image = document.createElement('img');
         image.src = item.image;
         image.setAttribute('data_id', item.id);
+        image.setAttribute('alt', 'product image');
         imageHolder.append(image);
 
         let titleHolder = document.createElement('div');
