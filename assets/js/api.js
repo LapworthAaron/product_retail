@@ -88,7 +88,7 @@ const loadModal = (prodId, apiData) => {
     rating.innerText = `${product.rating.rate} (${product.rating.count})`;
     rating.setAttribute('id', 'product_rating');
 
-    modalTitleContainer.append(modalTitle, price, rating);
+    modalTitleContainer.prepend(modalTitle, price, rating);
 
     let modalDesceContainer = document.getElementById('modal_footer');
 

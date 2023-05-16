@@ -95,7 +95,7 @@ test modal
     height: 400px;
     background-color: #fefefe;
     margin: auto auto;
-    padding: 20px;
+    padding: 5px;
     border: 1px solid #888;
     position: absolute;
     top: 0;
@@ -140,11 +140,12 @@ test modal
     left: 0;
     right: 0;
     margin: auto;
+    padding-right: 10px;
 }
 
 #modal_footer {
     grid-area: footer;
-    overflow: scroll;
+    overflow: auto;
 }
 
 
