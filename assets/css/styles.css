@@ -1,3 +1,10 @@
+:root {
+    --primary-background: #fefefe;
+    --primary-accent: grey;
+    --default-text: black;
+    --primary-highlight: blue;
+}
+
 * {
     margin:0;
     padding:0;
@@ -5,19 +12,19 @@
     font-family: arial;
 }
 
-main {
+html {
     background: hsla(302, 82%, 76%, 1);
     background: linear-gradient(90deg, hsla(302, 82%, 76%, 1) 0%, hsla(258, 40%, 68%, 1) 100%);
-    background: -webkit-linear-gradient(90deg, hsla(302, 82%, 76%, 1) 0%, hsla(258, 40%, 68%, 1) 100%);
 }
 
+/* List of products */
 #product_list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 5px;
     align-content: flex-start;
     justify-content: space-evenly;
-    border-radius: 5px;
 }
 
 .prod_container {
@@ -27,14 +34,14 @@ main {
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 10px 0;
-    background-color: white;
+    background-color: var(--primary-background);
     transition: 0.5s ease;
 }
 
 .prod_container:hover {
-    border: 2px solid blue;
+    border: 2px solid var(--primary-highlight);
     cursor: pointer; 
-    color: grey;
+    color: var(--primary-accent);
     transform: scaleX(105%) scaleY(105%);
 }
 
@@ -45,18 +52,12 @@ main {
     position: relative;
 }
 
-.prodImageContainer img {
+.prodImageContainer img,
+#modal_image_container img {
     max-height: 100%;
     max-width: 100%;
     width: auto;
     height: auto;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    border-radius: 10px;
 }
 
 .titleContainer {
@@ -69,8 +70,8 @@ main {
     height: 5%;
     width: 100%;
     padding-top: 10px;
+    color: var(--primary-accent);
 }
-
 
 /******************** MODAL ********************/
 .modal {
@@ -79,11 +80,10 @@ main {
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    height: 100%;
+    background-color: var(--default-text); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
 }
 
 /* Modal Content */
@@ -92,29 +92,23 @@ main {
     height: 90%;
     max-width: 600px;
     max-height: 500px;
-    background-color: #fefefe;
+    background-color: var(--primary-background);
     margin: auto auto;
     padding: 5px;
-    border: 1px solid #888;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+    border: 1px solid var(--primary-accent);
     display: grid;
 }
 
 /* The Close Button */
 #modal_close {
-    color: #aaa;
+    color: var(--primary-accent);
     font-size: 28px;
     font-weight: bold;
 }
 
 #modal_close:hover,
 #modal_close:focus {
-    color: black;
+    color: var(--default-text);
     text-decoration: none;
     cursor: pointer;
 }
@@ -124,7 +118,7 @@ main {
     top: -40px;
     right: 0px;
     padding: 0 6px;
-    background-color: #fefefe;
+    background-color: var(--primary-background);
     margin-bottom: 5px;
 }
 
@@ -165,29 +159,29 @@ main {
 }
 
 #modal_button:hover {
-    background-color: black;
-    color: white;
+    background-color: var(--default-text);
+    color: var(--primary-background);
     text-decoration: none;
     cursor: pointer;
 }
 
 #modal_image_container img {
     grid-area: image;
-    max-height: 100%;
-    max-width: 100%;
-    width: auto;
-    height: auto;
+    padding-right: 10px;
+}
+
+.prodImageContainer img,
+.modal_content,
+#modal_image_container img {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
-    padding-right: 10px;
 }
 
-
-
+/* make the modal grid responsive */
 @media only screen and (min-width: 415px) {
     .modal_content {
         grid-template-rows: 25% 75%;
