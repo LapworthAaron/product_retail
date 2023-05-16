@@ -52,7 +52,7 @@ const loadPage = (data) => {
         image.setAttribute('alt', 'product image');
         imageHolder.append(image);
 
-        let titleHolder = document.createElement('section');
+        let titleHolder = document.createElement('div');
         titleHolder.classList.add('titleContainer');
         titleHolder.setAttribute('data_id', item.id);
         titleHolder.setAttribute('role', 'Product Title');
@@ -61,7 +61,7 @@ const loadPage = (data) => {
         title.setAttribute('data_id', item.id);
         titleHolder.append(title);
 
-        let priceHolder = document.createElement('section');
+        let priceHolder = document.createElement('div');
         priceHolder.classList.add('priceContainer');
         priceHolder.setAttribute('data_id', item.id);
         priceHolder.setAttribute('role', 'Product Price');
@@ -87,7 +87,7 @@ const loadModal = (prodId, apiData) => {
     modalTitle.innerText = product.title;
     modalTitle.setAttribute('id', 'product_title');
 
-    let secondLine = document.createElement('section');
+    let secondLine = document.createElement('div');
     secondLine.setAttribute('id', 'product_price_rating');
     secondLine.setAttribute('role', 'Price and Rating');
     let price = document.createElement('h4');
