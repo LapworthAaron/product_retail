@@ -39,7 +39,7 @@ const loadPage = (data) => {
         prodList.append(container);
         container.addEventListener('click', (event) => {
             loadModal(event.target.attributes.data_id.value, data);
-            modal.style.display = "block";    
+            modal.style.visibility = "visible";    
         }, false);
 
         let imageHolder = document.createElement('figure');
@@ -75,7 +75,7 @@ const loadModal = (prodId, apiData) => {
     modalImage.src = product.image;
 
     let modalTitleContainer = document.getElementById("modal_heading");
-    
+
     let modalTitle = document.createElement('h3');
     modalTitle.innerText = product.title;
     modalTitle.setAttribute('id', 'product_title');
@@ -107,6 +107,6 @@ const closeModal = () => {
         let element = document.getElementById(item);
         element.remove();
     });
-    modal.style.display = "none";
+    modal.style.visibility = "hidden";
 }
 
