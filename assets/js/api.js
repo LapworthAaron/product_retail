@@ -33,10 +33,9 @@ fetch('https://fakestoreapi.com/products').then((response) => {
 const loadPage = (data) => {
     let prodList = document.getElementById('product_list');
     data.forEach(item => {
-        let container = document.createElement('div');
+        let container = document.createElement('section');
         container.classList.add('prod_container');
         container.setAttribute('data_id', item.id);
-        container.setAttribute('role', 'Single Product');
         prodList.append(container);
         container.addEventListener('click', (event) => {
             console.log(event);
@@ -53,7 +52,7 @@ const loadPage = (data) => {
         image.setAttribute('alt', 'product image');
         imageHolder.append(image);
 
-        let titleHolder = document.createElement('div');
+        let titleHolder = document.createElement('section');
         titleHolder.classList.add('titleContainer');
         titleHolder.setAttribute('data_id', item.id);
         titleHolder.setAttribute('role', 'Product Title');
@@ -62,7 +61,7 @@ const loadPage = (data) => {
         title.setAttribute('data_id', item.id);
         titleHolder.append(title);
 
-        let priceHolder = document.createElement('div');
+        let priceHolder = document.createElement('section');
         priceHolder.classList.add('priceContainer');
         priceHolder.setAttribute('data_id', item.id);
         priceHolder.setAttribute('role', 'Product Price');
@@ -88,7 +87,7 @@ const loadModal = (prodId, apiData) => {
     modalTitle.innerText = product.title;
     modalTitle.setAttribute('id', 'product_title');
 
-    let secondLine = document.createElement('div');
+    let secondLine = document.createElement('section');
     secondLine.setAttribute('id', 'product_price_rating');
     secondLine.setAttribute('role', 'Price and Rating');
     let price = document.createElement('h4');
